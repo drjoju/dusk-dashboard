@@ -3,6 +3,7 @@
 namespace BeyondCode\DuskDashboard\Dusk;
 
 use BeyondCode\DuskDashboard\BrowserActionCollector;
+use BeyondCode\DuskDashboard\BrowserReportCollector;
 
 class Browser extends \Laravel\Dusk\Browser
 {
@@ -18,9 +19,29 @@ class Browser extends \Laravel\Dusk\Browser
     /** @var BrowserActionCollector */
     protected $actionCollector;
 
+    /** @var BrowserReportCollector */
+    protected $reportCollector;
+
+    /**
+     * Create a browser instance.
+     *
+     * @param  \Facebook\WebDriver\Remote\RemoteWebDriver  $driver
+     * @param  \Laravel\Dusk\ElementResolver|null  $resolver
+     * @return void
+     */
+    public function __construct($driver, $resolver = null)
+    {
+        parent::__construct($driver, $resolver);
+    }
+
     public function setActionCollector(BrowserActionCollector $collector)
     {
         $this->actionCollector = $collector;
+    }
+
+    public function setReportCollector(BrowserReportCollector $reportCollector)
+    {
+        $this->reportCollector = $reportCollector;
     }
 
     /**

@@ -2,16 +2,17 @@
 
 namespace BeyondCode\DuskDashboard\Testing;
 
-use BeyondCode\DuskDashboard\BrowserActionCollector;
-use BeyondCode\DuskDashboard\Console\StartDashboardCommand;
-use BeyondCode\DuskDashboard\Dusk\Browser;
 use Closure;
-use Facebook\WebDriver\Chrome\ChromeOptions;
-use Facebook\WebDriver\Remote\DesiredCapabilities;
+use Throwable;
 use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
+use BeyondCode\DuskDashboard\Dusk\Browser;
 use Laravel\Dusk\TestCase as BaseTestCase;
-use Throwable;
+use Facebook\WebDriver\Chrome\ChromeOptions;
+use Facebook\WebDriver\Remote\DesiredCapabilities;
+use BeyondCode\DuskDashboard\BrowserActionCollector;
+use BeyondCode\DuskDashboard\BrowserReportCollector;
+use BeyondCode\DuskDashboard\Console\StartDashboardCommand;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -39,6 +40,7 @@ abstract class TestCase extends BaseTestCase
 
         foreach ($browsers as $browser) {
             $browser->setActionCollector(new BrowserActionCollector($this->getTestName()));
+            $browser->setReportCollector(new BrowserReportCollector($this->getTestName()));
         }
 
         static::$browsers = $browsers;

@@ -14,6 +14,9 @@ A beautiful dashboard for your Dusk test suites.
 * Upgraded some packages 
 * Applied community improvements from other forks
 
+## Next Step
+* Generate PDF report
+
 ## Installation
 
 You can install the package via composer:
