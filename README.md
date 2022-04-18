@@ -8,6 +8,12 @@ A beautiful dashboard for your Dusk test suites.
 
 ![](https://pociot.dev/storage/22/dusk-dashboard.gif)
 
+
+## Improvements
+* Upgrade to PHP 8.0
+* Upgraded some packages 
+* Applied community improvements from other forks
+
 ## Installation
 
 You can install the package via composer:
